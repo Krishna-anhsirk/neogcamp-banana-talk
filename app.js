@@ -5,15 +5,18 @@ var outputText = document.querySelector("#output");
 // var text = "Iron man";
 
 function urlConstructor(text) {
-  return (
-    "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json?text=" + text
-  );
+  return "https://api.funtranslations.com/translate/minion.json?text=" + text;
+}
+
+function errorHandler(error) {
+  console.log("Error ", error);
 }
 
 function doTranslate(text) {
   return fetch(urlConstructor(text))
     .then((response) => response.json())
-    .then((data) => console.log(data.contents.translated, data.contents.text));
+    .then((data) => (outputText.innerText = data.contents.translated))
+    .catch(errorHandler);
 }
 
 btnTranslate.addEventListener("click", () => {
