@@ -9,6 +9,7 @@ function urlConstructor(text) {
 }
 
 function errorHandler(error) {
+  alert("Server problem, Please try after some time");
   console.log("Error ", error);
 }
 
